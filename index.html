@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador de Texto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="images/Logo.png" alt="Logo" class="logo">
+        <h1>Encriptador de Texto</h1>
+        <textarea id="input-text" placeholder="Ingrese el texto aquí:"></textarea>
+        <p class="note">* Solo se deben ingresar letras minúsculas y sin acento</p>
+        <button onclick="encrypt()">Encriptar</button>
+        <button onclick="decrypt()">Desencriptar</button>
+        <p id="output-text"></p>
+        <p id="error-message"></p>
+        <img src="images/Muñeco.png" alt="Muñeco" class="muñeco">
+    </div>
+    <script>
+        function encrypt() {
+            let inputText = document.getElementById('input-text').value;
+            let errorMessage = document.getElementById('error-message');
+            let outputText = document.getElementById('output-text');
+            
+            errorMessage.textContent = '';
+            outputText.textContent = '';
+            
+            if (!inputText) {
+                errorMessage.textContent = 'Ningún mensaje fue encontrado';
+                return;
+            }
+            
+            let encryptedText = inputText.replace(/e/g, 'enter')
+                                        .replace(/i/g, 'imes')
+                                        .replace(/a/g, 'ai')
+                                        .replace(/o/g, 'ober')
+                                        .replace(/u/g, 'ufat');
+            
+            outputText.textContent = encryptedText;
+        }
+
+        function decrypt() {
+            let inputText = document.getElementById('input-text').value;
+            let errorMessage = document.getElementById('error-message');
+            let outputText = document.getElementById('output-text');
+            
+            errorMessage.textContent = '';
+            outputText.textContent = '';
+            
+            if (!inputText) {
+                errorMessage.textContent = 'Ningún mensaje fue encontrado';
+                return;
+            }
+            
+            let decryptedText = inputText.replace(/enter/g, 'e')
+                                        .replace(/imes/g, 'i')
+                                        .replace(/ai/g, 'a')
+                                        .replace(/ober/g, 'o')
+                                        .replace(/ufat/g, 'u');
+            
+            outputText.textContent = decryptedText;
+        }
+    </script>
+</body>
+</html>
